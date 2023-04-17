@@ -28,10 +28,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem 'semantic-ui-sass'
 gem 'jquery-rails'
-<<<<<<< HEAD
-=======
 
->>>>>>> eda15b3eb6194959617cb1da814dafc39ea73715
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
