@@ -10,7 +10,8 @@ consumer.subscriptions.create("ChatroomChannel", {
   },
 
   received(data) {
-    this.appendLine(data)
+    $('#message-container').append(data.mod_message)
+    // this.appendLine(data)
     // alert data.foo
   }
 });
