@@ -1,23 +1,22 @@
 <div class="ui placeholder segment">
+  <div class="ui center aligned container">
+    <h1 class="text"> Sign up for MessageMe</h1>
+  </div>
+    <div class="ui hidden section divider"></div>
   <form class="ui form">
-    <%= form_for(:user, html: {class: "ui form", role: "form"}, url: signup_path, local: true, data: { turbo: false }) do |f| %>
+    <%# <%= form_with(model: @user, html: {class: "ui form", role: "form"}, local: true, data: { turbo: false }) do |f| %>
+
+    <%# <%= form_for(@user, html: {class: "ui form", role: "form"}, url: signup_path, local: true, data: { turbo: false }) do |f| %>
       <div class="field">
+        <%= form_with(model: @user, html: {class: "ui form", role: "form"}, local: true, data: { turbo: false }) do |f| %>
         <%= f.label :username, "Username" %>
-        <!-- <label>Username</label> -->
-        <input type="text" name="username" placeholder="Choose username">
+        <%= f.text_field :username, placeholder: "Choose username" %>
       </div>
       <div class="field">
         <%= f.label :password, "Password" %>
-        <!-- <label>Password</label> -->
-        <input type="text" name="password" placeholder="Choose password">
+        <%= f.password_field :password, placeholder: "Choose password"%>
       </div>
-      <div class="field">
-        <div class="ui checkbox">
-          <input type="checkbox" tabindex="0" name="example">
-          <label>I agree to the Terms and Conditions</label>
-        </div>
-      </div>
-      <button class="ui blue button" type="submit">Sign up</button>
+      <%= f.submit class: "ui blue button" %>
     <% end %>
   </form>
 </div>
