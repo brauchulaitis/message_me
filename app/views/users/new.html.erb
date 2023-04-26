@@ -1,19 +1,23 @@
 <div class="ui placeholder segment">
   <form class="ui form">
-    <div class="field">
-      <label>Username</label>
-      <input type="text" name="first-name" placeholder="Choose username">
-    </div>
-    <div class="field">
-      <label>Password</label>
-      <input type="text" name="last-name" placeholder="Choose password">
-    </div>
-    <div class="field">
-      <div class="ui checkbox">
-        <input type="checkbox" tabindex="0" name="example">
-        <label>I agree to the Terms and Conditions</label>
+    <%= form_for(:user, html: {class: "ui form", role: "form"}, url: signup_path, local: true, data: { turbo: false }) do |f| %>
+      <div class="field">
+        <%= f.label :username, "Username" %>
+        <!-- <label>Username</label> -->
+        <input type="text" name="username" placeholder="Choose username">
       </div>
-    </div>
-    <button class="ui blue button" type="submit">Sign up</button>
+      <div class="field">
+        <%= f.label :password, "Password" %>
+        <!-- <label>Password</label> -->
+        <input type="text" name="password" placeholder="Choose password">
+      </div>
+      <div class="field">
+        <div class="ui checkbox">
+          <input type="checkbox" tabindex="0" name="example">
+          <label>I agree to the Terms and Conditions</label>
+        </div>
+      </div>
+      <button class="ui blue button" type="submit">Sign up</button>
+    <% end %>
   </form>
 </div>
