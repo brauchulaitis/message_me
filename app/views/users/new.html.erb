@@ -2,11 +2,11 @@
   <%= form_with(model: @user, class: "ui form", local: true, data: { turbo: false }) do |f| %>
     <div class="field">
       <label>Username</label>
-      <input type="text" name="user[username]" placeholder="Choose username">
+      <%= f.text_field :username, placeholder: "Choose username" %>
     </div>
     <div class="field">
       <label>Password</label>
-      <input type="password" name="user[password]" placeholder="Choose password">
+      <%= f.password_field :password, placeholder: "Choose password" %>
     </div>
     <div class="field">
       <div class="ui checkbox">

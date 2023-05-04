@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
-  protect_from_forgery with: :null_session
-
+  # protect_from_forgery with: :null_session
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
