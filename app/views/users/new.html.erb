@@ -1,12 +1,12 @@
 <div class="ui placeholder segment">
-  <form class="ui form">
+  <%= form_with(model: @user, class: "ui form", local: true, data: { turbo: false }) do |f| %>
     <div class="field">
       <label>Username</label>
-      <input type="text" name="first-name" placeholder="Choose username">
+      <input type="text" name="user[username]" placeholder="Choose username">
     </div>
     <div class="field">
       <label>Password</label>
-      <input type="text" name="last-name" placeholder="Choose password">
+      <input type="password" name="user[password]" placeholder="Choose password">
     </div>
     <div class="field">
       <div class="ui checkbox">
@@ -15,5 +15,5 @@
       </div>
     </div>
     <button class="ui blue button" type="submit">Sign up</button>
-  </form>
+  <% end %>
 </div>
