@@ -1,10 +1,23 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, only: [:edit, :update]
   # before_action :set_user, only: [:show]
   # before_action :require_user, only: []
-  before_action :logged_in_redirect
+  # before_action :logged_in_redirect
 
   def new
     @user = User.new
+  end
+
+  def show
+    @messages = @user.messages
+  end
+
+  def index
+    @users = User
+  end
+
+  def edit
   end
 
   def create
