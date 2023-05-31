@@ -19,6 +19,15 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def update
+    if @user.update(user_params)
+      flash[:notice] = "Your account information was successfully updated"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -33,7 +42,6 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    @user.messages.destroy
     session[:user_id] = nil if @user == current_user
     flash[:success] = "Account and all associated messages has been deleted"
     redirect_to login_path

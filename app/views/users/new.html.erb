@@ -1,19 +1,4 @@
-<div class="ui placeholder segment">
-  <%= form_with(model: @user, class: "ui form", local: true, data: { turbo: false }) do |f| %>
-    <div class="field">
-      <label>Username</label>
-      <%= f.text_field :username, placeholder: "Choose username" %>
-    </div>
-    <div class="field">
-      <label>Password</label>
-      <%= f.password_field :password, placeholder: "Choose password" %>
-    </div>
-    <!-- <div class="field">
-      <div class="ui checkbox">
-        <input type="checkbox" tabindex="0" name="example">
-        <label>I agree to the Terms and Conditions</label>
-      </div>
-    </div> -->
-    <button class="ui blue button" type="submit">Sign up</button>
-  <% end %>
-</div>
+<h1 class="ui container center aligned content"> 
+  Signing up
+</h1>
+<%= render 'form' %>
