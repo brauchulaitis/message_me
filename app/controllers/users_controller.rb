@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :require_user, only: [:edit, :update]
-  # before_action :set_user, only: [:show]
-  # before_action :require_user, only: []
-  # before_action :logged_in_redirect
+  before_action :require_user, only: [:edit, :update, :index]
+  before_action :logged_in_redirect, only: [:create, :new]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -27,8 +26,17 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path
     else
+      flash.now[:error] = "Something went wrong while creating your user. Please try again!"
       render 'new'
     end
+  end
+
+  def destroy
+    @user.destroy
+    @user.messages.destroy
+    session[:user_id] = nil if @user == current_user
+    flash[:success] = "Account and all associated messages has been deleted"
+    redirect_to login_path
   end
 
   private
@@ -45,6 +53,13 @@ class UsersController < ApplicationController
     if logged_in?
       flash[:error] = "You are already signed up and logged in"
       redirect_to root_path
+    end
+  end
+
+  def require_same_user
+    if current_user != @user && !current_user.admin?
+      flash[:alert] = "You can only edit or delete your own account"
+      redirect_to @user
     end
   end
 end
