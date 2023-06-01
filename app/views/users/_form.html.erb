@@ -10,4 +10,8 @@
     </div>
     <%= f.submit(@user.new_record? ? "Sign up" : "Update account", class: "ui blue button") %>
   <% end %>
+  <div class="ui container center aligned content">
+    <br/>
+    <%= link_to '[ Cancel and return ]', root_path, class: "d-flex justify-content-center mb-3 text-light" %>
+  </div>
 </div>
