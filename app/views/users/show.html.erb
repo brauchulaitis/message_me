@@ -1,1 +1,12 @@
-<h1>This is user show page</h1>
+<div class="ui placeholder segment">
+  <h1 class="ui container center aligned content"> <%= @user.username %>'s profile </h1>
+  <% if logged_in? && @user == current_user %>
+    <div class="ui container center aligned content">
+      <%= link_to "Edit your profile", edit_user_path(@user), class: "ui blue button" %>
+      <br/>
+      <%= link_to "Delete profile", user_path(current_user), class: "ui red button", data: {turbo_method: :delete, "turbo-confirm": "Are you sure you want to delete your profile?" } %>
+      <br/>
+      <%= link_to "Logout", logout_path, class: "ui blue button", data: {turbo_method: :delete} %>
+    </div>
+  <% end %>
+</div>

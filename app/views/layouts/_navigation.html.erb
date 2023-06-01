@@ -11,7 +11,7 @@
         <%= link_to "Friends list", users_path, class: "item" %>
         <%= link_to "View your profile", user_path(current_user), class: "item" %>
         <%= link_to "Edit your profile", edit_user_path(current_user), class: "item" %>
-        <%= link_to "Delet profile", user_path(current_user), class: "item", data: {turbo_method: :delete, "turbo-confirm": "Are you sure you want to delete your profile?" } %>
+        <%= link_to "Delete profile", user_path(current_user), class: "item", data: {turbo_method: :delete, "turbo-confirm": "Are you sure you want to delete your profile?" } %>
         <%= link_to "Logout", logout_path, class: "item", data: {turbo_method: :delete} %>
         <% else %>
         <%= link_to "Log in", login_path, class: "item" %>
